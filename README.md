@@ -15,6 +15,21 @@ This repository provides a side-by-side comparison of four major programming lan
 
 ---
 
+## 🔬 Cross-Language Profiling Comparison
+
+| Metric            | Python                       | Go                                | Java                             | C++                            |
+|-------------------|-------------------------------|------------------------------------|----------------------------------|--------------------------------|
+| Execution Time     | 37.066 seconds               | 0.0064762 seconds                 | 0.008 seconds                    | 0.05161 seconds                |
+| Memory Usage       | ~26.9 MiB                    | ~2 MiB                            | ~455 MiB *(JVM overhead)*        | 0.16 MiB                       |
+| Profiler Used      | `memory_profiler`            | `runtime` + manual timing         | `JVisualVM`                      | Visual Studio Profiler         |
+| Top Function Call  | Matrix Multiply Function     | Matrix Multiply (main goroutine)  | main thread (JVM tracked)        | Operator overloading & loops   |
+| GC Activity        | Not applicable               | Not applicable                    | Minimal (0% shown in JVisualVM)  | Not applicable                 |
+| Thread Info        | Single-threaded              | 2 goroutines                      | 40 live threads                  | 1 main thread                  |
+| Dev Overhead       | Minimal                      | Low                               | Moderate (JVM + IDE setup)       | High (compiler + profiler)     |
+
+---
+
+
 ## 📚 Project Overview
 
 ### Tasks Implemented:
