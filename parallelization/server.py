@@ -16,14 +16,18 @@ DB_PATH = 'results.db'
 CSV_PATH = '/home/codespace/.cache/kagglehub/datasets/weitat/sample-sales/versions/1/sales_5000000.csv'
 
 # Number of workers expected
-NUM_WORKERS = 2
+NUM_WORKERS = 4
 
-# === Database Setup ===
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
+
+    # Drop the table if it already exists (removes old data)
+    cursor.execute('DROP TABLE IF EXISTS worker_stats')
+
+    # Recreate the table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS worker_stats (
+        CREATE TABLE worker_stats (
             worker_id TEXT PRIMARY KEY,
             rows_processed INTEGER,
             total_sales REAL,

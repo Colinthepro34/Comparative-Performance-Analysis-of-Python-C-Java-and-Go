@@ -44,7 +44,7 @@ def main():
     avg_price = df_chunk['Unit Price'].mean()
 
     # Prepare results
-    worker_id = os.getenv('HOSTNAME', 'worker_unknown')
+    worker_id = 'worker_1'
     partial_results = {
         'worker_id': worker_id,
         'rows_processed': rows_processed,
